@@ -40,6 +40,7 @@ public class App {
 				",")));
 		TiebaConfig.setQuartz_page(Integer.parseInt(properties.get(
 				"quartz.page").toString()));
+		logger.info("系统配置加载完毕.");
 		// 贴吧初始化
 		// 初始化帖子标题
 		if (TiebaConfig.getKeys().size() > 0) {

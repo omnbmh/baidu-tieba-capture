@@ -11,6 +11,7 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
+import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.helper.StringUtil;
 import org.jsoup.nodes.Document;
@@ -26,6 +27,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 public class CaptureTiebaContentRunnable implements Runnable {
+	static Logger logger = Logger.getLogger(CaptureImageRunnable.class);
 	final String TIEBA_URL = "http://tieba.baidu.com/p/%s?see_lz=1&pn=%s";
 	List<BaiduTiebaTitle> titles;
 
@@ -35,6 +37,7 @@ public class CaptureTiebaContentRunnable implements Runnable {
 
 	public void run() {
 		for (BaiduTiebaTitle title : titles) {
+			logger.info("开始初始化" + title.getTiebaName() + "吧标题.");
 			long id = title.getId();
 			int pn = 0;// 要抓取的起始页码
 			long floorNum = 0;
@@ -48,7 +51,8 @@ public class CaptureTiebaContentRunnable implements Runnable {
 				HttpClient client = new DefaultHttpClient();
 				HttpGet get = new HttpGet(String.format(TIEBA_URL, id + "", pn
 						+ ""));
-				System.out.println(String.format(TIEBA_URL, id + "", pn + ""));
+				logger.info("开始抓取" + title.getTiebaName() + "吧的内容..."
+						+ String.format(TIEBA_URL, id + "", pn + ""));
 				pn++;
 				HttpResponse response;
 				try {
@@ -85,8 +89,9 @@ public class CaptureTiebaContentRunnable implements Runnable {
 								Element floor = floors.get(p);
 								String src = floor.attr("src");
 								if (src.contains("http://imgsrc.baidu.com/forum/")) {
-									System.out.print(String.format("%s %s %s ",
-											id + "", floorNum + "", p + ""));
+									logger.info("命中图片 "
+											+ String.format("%s %s %s ", id
+													+ "", floorNum + "", p + ""));
 									System.out.println(src);
 									BaiduTiebaContentId contentId = new BaiduTiebaContentId();
 									contentId.setTitleId(id);
@@ -142,7 +147,7 @@ public class CaptureTiebaContentRunnable implements Runnable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		System.out.println("帖子 id :" + id + ", 共" + pages + "页.");
+		//System.out.println("帖子 id :" + id + ", 共" + pages + "页.");
 		return pages;
 	}
 }

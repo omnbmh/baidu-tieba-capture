@@ -60,7 +60,7 @@ public class CaptureTiebaTitleRunnable implements Runnable {
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
 		params.add(new BasicNameValuePair("kw", key));
 		params.add(new BasicNameValuePair("pn", pn + ""));
-
+		logger.info("开始初始化" + key + "吧标题.");
 		HttpClient client = new DefaultHttpClient();
 		int p = 0;
 		while ((pages == 0) ? hasNextPage : (p <= pages)) {
@@ -68,7 +68,7 @@ public class CaptureTiebaTitleRunnable implements Runnable {
 			HttpGet get = new HttpGet(String.format(TIEBA_BASE_URL,
 					URLEncoder.encode(key), pn + ""));
 			System.out.println(key
-					+ " is running . "
+					+ "吧正在抓取标题... "
 					+ String.format(TIEBA_BASE_URL, URLEncoder.encode(key), pn
 							+ ""));
 			p++;
@@ -91,16 +91,17 @@ public class CaptureTiebaTitleRunnable implements Runnable {
 				Document html = Jsoup.parse(htmlString);
 				if (html.select("div.threadlist_title a").size() == 0) {
 					// 贴吧被封
-					System.out.println(key + "吧被封了.");
+					System.out.println("尼玛," + key + "吧被封了.");
 					break;
 				}
-				String titleString = html.select("div.threadlist_title a")
-						.first().attr("title");
 
 				hasNextPage = html.select("a.next").size() > 0;
 				Elements elements = html.select("li[data-field]");
 				for (Element element : elements) {
 					String data = element.attr("data-field");
+					String titleString = element
+							.select("div.threadlist_title a").first()
+							.attr("title");
 					// System.out.println(data);
 					JsonObject json = new JsonParser().parse(data)
 							.getAsJsonObject();

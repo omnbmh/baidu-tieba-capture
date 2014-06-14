@@ -89,9 +89,9 @@ public class CaptureJobsLoder implements SchedulerPlugin {
 	}
 
 	private void loadJobs() throws SchedulerException {
-		String path = this.getClass().getClassLoader()
-				.getResource(getJobsConfDirectory()).getPath();
-		// String path = getJobsConfDirectory();
+		 String path = this.getClass().getClassLoader()
+		 .getResource(getJobsConfDirectory()).getPath();
+		//String path = getJobsConfDirectory();
 		System.out.println(path);
 		File dir = new File(path);
 		if (getJobsConfDirectory() == null || !dir.exists()) {
