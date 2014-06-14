@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-6-14 2:03:37 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.chendezhi.baidu.tieba.capture.hibernate.BaiduTiebaTitle" table="baidu_tieba_title" catalog="weibo">
+        <id name="id" type="long">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="tiebaName" type="string">
+            <column name="tieba_name" length="50" not-null="true" />
+        </property>
+        <property name="title" type="string">
+            <column name="title" length="1000" />
+        </property>
+        <property name="authorName" type="string">
+            <column name="author_name" length="50" />
+        </property>
+        <property name="replyNum" type="long">
+            <column name="reply_num" not-null="true" />
+        </property>
+        <property name="isGood" type="java.lang.Integer">
+            <column name="is_good" />
+        </property>
+        <property name="isTop" type="java.lang.Integer">
+            <column name="is_top" />
+        </property>
+        <property name="isNew" type="boolean">
+            <column name="is_new" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

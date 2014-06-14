@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-6-14 2:03:37 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.chendezhi.baidu.tieba.capture.hibernate.BaiduTiebaContentTask" table="baidu_tieba_content_task" catalog="weibo">
+        <id name="tiebaId" type="long">
+            <column name="tieba_id" />
+            <generator class="assigned" />
+        </id>
+        <property name="page" type="int">
+            <column name="page" not-null="true" />
+        </property>
+        <property name="floor" type="long">
+            <column name="floor" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

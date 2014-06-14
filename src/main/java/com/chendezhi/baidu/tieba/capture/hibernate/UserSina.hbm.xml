@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-6-14 2:03:37 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.chendezhi.baidu.tieba.capture.hibernate.UserSina" table="user_sina" catalog="weibo">
+        <id name="id" type="long">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" length="30" not-null="true" />
+        </property>
+        <property name="provinceId" type="java.lang.Short">
+            <column name="province_id" />
+        </property>
+        <property name="cityId" type="java.lang.Short">
+            <column name="city_id" />
+        </property>
+        <property name="location" type="string">
+            <column name="location" length="50" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="300" />
+        </property>
+        <property name="url" type="string">
+            <column name="url" length="300" />
+        </property>
+        <property name="profileImageUrl" type="string">
+            <column name="profile_image_url" length="300" />
+        </property>
+        <property name="domain" type="string">
+            <column name="domain" length="300" />
+        </property>
+        <property name="gender" type="string">
+            <column name="gender" length="2" not-null="true" />
+        </property>
+        <property name="followersCount" type="long">
+            <column name="followers_count" not-null="true" />
+        </property>
+        <property name="friendsCount" type="long">
+            <column name="friends_count" not-null="true" />
+        </property>
+        <property name="biFollowersCount" type="long">
+            <column name="bi_followers_count" not-null="true" />
+        </property>
+        <property name="statusesCount" type="long">
+            <column name="statuses_count" not-null="true" />
+        </property>
+        <property name="favouritesCount" type="java.lang.Long">
+            <column name="favourites_count" />
+        </property>
+        <property name="activeAt" type="timestamp">
+            <column name="active_at" length="19" />
+        </property>
+        <property name="verified" type="java.lang.Boolean">
+            <column name="verified" />
+        </property>
+        <property name="verifiedType" type="java.lang.Short">
+            <column name="verified_type" />
+        </property>
+        <property name="verifiedReason" type="string">
+            <column name="verified_reason" length="200" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="100" />
+        </property>
+        <property name="realName" type="string">
+            <column name="real_name" length="50" />
+        </property>
+        <property name="birthday" type="string">
+            <column name="birthday" length="50" />
+        </property>
+        <property name="birthdayVisible" type="java.lang.Byte">
+            <column name="birthday_visible" />
+        </property>
+        <property name="credentialsNum" type="java.lang.Integer">
+            <column name="credentials_num" />
+        </property>
+        <property name="credentialsType" type="java.lang.Integer">
+            <column name="credentials_type" />
+        </property>
+        <property name="msn" type="string">
+            <column name="msn" length="50" />
+        </property>
+        <property name="qq" type="string">
+            <column name="qq" length="50" />
+        </property>
+        <property name="tags" type="string">
+            <column name="tags" length="200" />
+        </property>
+        <property name="regTime" type="timestamp">
+            <column name="reg_time" length="19" />
+        </property>
+        <property name="refreshTime" type="timestamp">
+            <column name="refresh_time" length="19" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

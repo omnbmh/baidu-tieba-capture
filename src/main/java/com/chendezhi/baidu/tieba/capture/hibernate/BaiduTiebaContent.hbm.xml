@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-6-14 2:03:37 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.chendezhi.baidu.tieba.capture.hibernate.BaiduTiebaContent" table="baidu_tieba_content" catalog="weibo">
+        <composite-id name="id" class="com.chendezhi.baidu.tieba.capture.hibernate.BaiduTiebaContentId">
+            <key-property name="titleId" type="long">
+                <column name="title_id" />
+            </key-property>
+            <key-property name="floor" type="long">
+                <column name="floor" />
+            </key-property>
+            <key-property name="imgIdx" type="int">
+                <column name="img_idx" />
+            </key-property>
+        </composite-id>
+        <property name="imgUrl" type="string">
+            <column name="img_url" length="300" not-null="true" />
+        </property>
+        <property name="isDownload" type="boolean">
+            <column name="is_download" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

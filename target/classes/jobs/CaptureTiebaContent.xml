@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job-scheduling-data
+	xmlns="http://www.quartz-scheduler.org/xml/JobSchedulingData"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.quartz-scheduler.org/xml/JobSchedulingData http://www.quartz-scheduler.org/xml/job_scheduling_data_2_0.xsd"
+	version="2.0">
+	<processing-directives>
+		<!-- if there are any jobs/trigger in scheduler of same name (as in this 
+			file), overwrite them -->
+		<overwrite-existing-data>true</overwrite-existing-data>
+		<!-- if there are any jobs/trigger in scheduler of same name (as in this 
+			file), and over-write is false, ignore them rather then generating an error -->
+		<ignore-duplicates>false</ignore-duplicates>
+	</processing-directives>
+	<schedule>
+		<job>
+			<name>CaptureTiebaContent</name>
+			<group>CaptureTiebaGroup</group>
+			<description>抓取贴吧内容</description>
+			<job-class>com.chendezhi.baidu.tieba.capture.CaptureTiebaContentJob</job-class>
+			<durability>false</durability>
+			<recover>true</recover>
+			<job-data-map>
+				<entry>
+					<key>args</key>
+					<value>1</value>
+				</entry>
+			</job-data-map>
+		</job>
+		<trigger>
+			<cron>
+				<name>CaptureTiebaContentTrigger</name>
+				<group>CaptureTiebaTriggerGroup</group>
+				<job-name>CaptureTiebaContent</job-name>
+				<job-group>CaptureTiebaGroup</job-group>
+				<cron-expression>0 0 0/1 * * ?</cron-expression>
+			</cron>
+		</trigger>
+	</schedule>
+</job-scheduling-data>

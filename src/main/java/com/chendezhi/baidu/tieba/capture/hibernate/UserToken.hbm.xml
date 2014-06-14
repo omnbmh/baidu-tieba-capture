@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-6-14 2:03:37 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.chendezhi.baidu.tieba.capture.hibernate.UserToken" table="user_token" catalog="weibo">
+        <id name="uid" type="long">
+            <column name="uid" />
+            <generator class="assigned" />
+        </id>
+        <property name="accessToken" type="string">
+            <column name="access_token" length="200" />
+        </property>
+        <property name="expiresIn" type="long">
+            <column name="expires_in" not-null="true" />
+        </property>
+        <property name="authorizeAt" type="timestamp">
+            <column name="authorize_at" length="19" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
